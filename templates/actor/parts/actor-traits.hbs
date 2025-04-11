@@ -3,33 +3,70 @@
     <span>Traits</span>
     <hr />
     <div class="item-controls">
-      <a
-        class="item-control item-create"
-        title="Create item"
-        data-type="trait"
-      >
+      <a class="item-control item-create" title="Create item" data-type="trait">
         <i class="fas fa-plus"></i>
       </a>
     </div>
   </li>
   {{#each traits as |item id|}}
-    <li class="flexrow item mm-item" data-item-id='{{item._id}}'>
+    <li class="flexrow item mm-item -nowrap" data-item-id="{{item._id}}">
       <div class="item-name mm-item-name">
-        <a class="rollable" data-roll-type="item">{{item.name}}</a>
-      </div>
-      <div class="item-controls">
-        <a
-          class="item-control item-edit"
-          title="{{localize 'DOCUMENT.Edit' type="trait"}}"
-        >
-          <i class="fas fa-edit"></i>
-        </a>
-        <a
-          class="item-control item-delete"
-          title="{{localize 'DOCUMENT.Delete' type="trait"}}"
-        >
-          <i class="fas fa-trash"></i>
-        </a>
+        <details>
+          <summary>
+            <div class="item-controls">
+              <a
+                class="item-control item-edit"
+                title="{{localize 'DOCUMENT.Edit' type="power"}}"
+              >
+                <i class="fas fa-edit"></i>
+              </a>
+              <a
+                class="item-control item-delete"
+                title="{{localize 'DOCUMENT.Delete' type="power"}}"
+              >
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+
+            <a
+              class="rollable"
+              data-roll-type="chat"
+              data-label="{{item.name}}"
+            >
+              <span><i class="fas fa-comment"></i></span>
+            </a>
+
+            {{#if item.system.ability}}
+              <a
+                class="rollable"
+                data-roll-type="item"
+                data-label="{{item.system.ability}}"
+              >
+                <span><i class="fas fa-dice"></i></span>
+              </a>
+            {{/if}}
+
+            <span
+              style="font-size: 110%; line-height: normal;"
+            >{{item.name}}</span>
+            {{#if item.system.prerequisites}}
+              <span style="color: #999999">
+                ({{item.system.prerequisites}})
+              </span>
+            {{/if}}
+          </summary>
+          <hr />
+          <div style="text-transform: none;">
+            {{{item.system.description}}}
+            {{#ifm item.system.restriction}}
+              <div class="tags">
+                {{#if item.system.restriction}}
+                  <span>Restriction: {{item.system.restriction}}</span>
+                {{/if}}
+              </div>
+            {{/ifm}}
+          </div>
+        </details>
       </div>
     </li>
   {{/each}}

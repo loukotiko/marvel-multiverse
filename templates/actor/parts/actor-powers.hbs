@@ -65,21 +65,23 @@
                   </span>
                 {{/if}}
               </summary>
-              <hr />
-              <div style="color: #CC0000">
+              <div>
                 {{{item.system.description}}}
               </div>
-              {{{item.system.effect}}}
-              {{#ifm item.system.cost item.system.attackRange}}
-                <div class="tags">
-                  {{#if item.system.cost}}
-                    <span>Cost: {{item.system.cost}}</span>
-                  {{/if}}
-                  {{#if item.system.range}}
-                    <span>Range: {{item.system.attackRange}}</span>
-                  {{/if}}
-                </div>
-              {{/ifm}}
+              <hr />
+              <div style="text-transform: none;">
+                {{{item.system.effect}}}
+                {{#ifm item.system.cost item.system.attackRange}}
+                  <div class="tags">
+                    {{#if item.system.cost}}
+                      <span>Cost: {{item.system.cost}}</span>
+                    {{/if}}
+                    {{#if item.system.range}}
+                      <span>Range: {{item.system.attackRange}}</span>
+                    {{/if}}
+                  </div>
+                {{/ifm}}
+              </div>
             </details>
           </div>
         </li>
