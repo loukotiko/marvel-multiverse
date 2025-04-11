@@ -24,6 +24,13 @@
             <details>
               <summary>
                 <div class="item-controls">
+                {{#ifm item.system.cost item.system.attackRange}}
+                  <div class="tags">
+                    {{#if item.system.cost}}
+                      <span>{{item.system.cost}}</span>
+                    {{/if}}
+                  </div>
+                {{/ifm}}
                   <a
                     class="item-control item-edit"
                     title="{{localize 'DOCUMENT.Edit' type="power"}}"
@@ -56,31 +63,53 @@
                   </a>
                 {{/if}}
 
-                <span
-                  style="font-size: 110%; line-height: normal;"
-                >{{item.name}}</span>
-                {{#if item.system.prerequisites}}
-                  <span style="color: #999999">
-                    ({{item.system.prerequisites}})
-                  </span>
-                {{/if}}
+                <span style="font-size: 110%; line-height: normal;">
+                  {{item.name}}
+                </span>
+                
+                {{#actionType item.system.action "Action"}}
+                  <i class="fas fa-bolt"
+                  {{#actionType item.system.action "Reaction"}}
+                    style="color: #CC0000"
+                  {{else}}
+                    style="color: #999999"
+                  {{/actionType}}
+                  title="Reaction"></i>
+                  <i class="fas fa-sparkle"
+                  {{#actionType item.system.action "Standard"}}
+                    style="color: #CC0000"
+                  {{else}}
+                    style="color: #999999"
+                  {{/actionType}}
+                  title="Action"></i>
+                  <i class="fas fa-ski-boot"
+                  {{#actionType item.system.action "Movement"}}
+                    style="color: #CC0000"
+                  {{else}}
+                    style="color: #999999"
+                  {{/actionType}}
+                  title="Movement"></i>
+                {{/actionType}}
+                
               </summary>
               <div>
                 {{{item.system.description}}}
               </div>
               <hr />
               <div style="text-transform: none;">
+                {{#if item.system.prerequisites}}
+                  <p style="color: #999999">
+                    <i class="fas fa-chevrons-up"></i>
+                    {{item.system.prerequisites}}
+                  </p>
+                {{/if}}
+                {{#if item.system.trigger}}
+                  <p style="color:#CC0000;text-transform: none">
+                    <i class="fas fa-bolt" title="Reaction"></i>
+                    <span>{{item.system.trigger}}</span>
+                  </p>
+                {{/if}}
                 {{{item.system.effect}}}
-                {{#ifm item.system.cost item.system.attackRange}}
-                  <div class="tags">
-                    {{#if item.system.cost}}
-                      <span>Cost: {{item.system.cost}}</span>
-                    {{/if}}
-                    {{#if item.system.range}}
-                      <span>Range: {{item.system.attackRange}}</span>
-                    {{/if}}
-                  </div>
-                {{/ifm}}
               </div>
             </details>
           </div>

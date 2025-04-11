@@ -1474,43 +1474,44 @@ class ChatMessageMarvel extends ChatMessage {
       game.i18n.localize(CONFIG.MARVEL_MULTIVERSE.abilities[ability]) ??
       ability;
 
-    const content = `<div class="marvel-roll"><h4 class="dice-total"><span>${
+    const content = `<details><summary class="marvel-roll" style="appearance:auto"><h4 class="dice-total"><span>${
       fantastic ? `${fantasticDmg} fantastic damage!` : `${dmg} damage`
-    }</span></h4></div>
-    <p style="text-align:center">
-      <span title="Marvel Die">${marvelDie.total}</span>
-      <i class="fas fa-xmark"></i>
-      <i class="fas fa-bracket-round"></i>
-      <span title="${abilityLabel} Damage Multiplier">${damageMultiplier}</span>
-      <i class="fas fa-minus"></i>
-      <span title="Target Damage Reduction">${damageReduction}</span>
-      <i class="fas fa-bracket-round-right"></i>
-      <i class="fas fa-plus"></i>
-      <span title="${abilityLabel} Score">${abilityValue}</span>
+    }</span></h4></summary>
+      <p style="text-align:center">
+        <span title="Marvel Die">${marvelDie.total}</span>
+        <i class="fas fa-xmark"></i>
+        <i class="fas fa-bracket-round"></i>
+        <span title="${abilityLabel} Damage Multiplier">${damageMultiplier}</span>
+        <i class="fas fa-minus"></i>
+        <span title="Target Damage Reduction">${damageReduction}</span>
+        <i class="fas fa-bracket-round-right"></i>
+        <i class="fas fa-plus"></i>
+        <span title="${abilityLabel} Score">${abilityValue}</span>
+        ${
+          fantastic
+            ? `
+          <i class="fas fa-xmark"></i> 2
+          `
+            : ``
+        }
+  
+      </p>
+      <p style="font-size: 80%;text-align:center">
+        MarvelDie
+        <i class="fas fa-xmark"></i>
+        ${abilityLabel}DmgMult
+        <i class="fas fa-plus"></i>
+        ${abilityLabel}Score
+      </p>
       ${
         fantastic
-          ? `
-        <i class="fas fa-xmark"></i> 2
-        `
+          ? `<p style="font-size: 80%;text-align:center">
+        <strong><i class="fas fa-xmark"></i> 2 (Fantastic roll!)
+        </strong>
+      </p>
+      </details>`
           : ``
       }
-
-    </p>
-    <p style="font-size: 80%;text-align:center">
-      MarvelDie
-      <i class="fas fa-xmark"></i>
-      ${abilityLabel}DmgMult
-      <i class="fas fa-plus"></i>
-      ${abilityLabel}Score
-    </p>
-    ${
-      fantastic
-        ? `<p style="font-size: 80%;text-align:center">
-      <strong><i class="fas fa-xmark"></i> 2 (Fantastic roll!)
-      </strong>
-    </p>`
-        : ``
-    }
     `;
 
     const msgData = {
@@ -3482,6 +3483,28 @@ Handlebars.registerHelper("toLowerCase", (mle) => mle.toLowerCase());
 Handlebars.registerHelper("ifm", function (...args) {
   const options = args.pop();
   return args.some(Boolean) ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("actionType", function (value, actionType, options) {
+  const normalizedValue = value?.toLowerCase() || "";
+  const isReaction = normalizedValue.includes("reaction");
+  const isStandard = normalizedValue.includes("standard");
+  const isMovement = normalizedValue.includes("movement");
+  switch (actionType) {
+    case "Reaction":
+      return isReaction ? options.fn(this) : options.inverse(this);
+
+    case "Movement":
+      return isMovement ? options.fn(this) : options.inverse(this);
+
+    case "Standard":
+      return isStandard ? options.fn(this) : options.inverse(this);
+
+    case "Action":
+      return isStandard || isReaction || isMovement
+        ? options.fn(this)
+        : options.inverse(this);
+  }
 });
 
 /* -------------------------------------------- */

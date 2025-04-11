@@ -162,7 +162,7 @@
                 </div>
               </div>
               <div class="mm-stat-corner-block rollable roll-initiative" data-action="rollInitiative">
-                <label class="mm-label -sm">Initative</label>
+                <label class="mm-label -sm">Initiative</label>
                 <div class="mm-input">
                   {{system.attributes.init.value}} {{#if system.attributes.init.edge }}<span>E</span>{{/if}}
                 </div>
@@ -219,17 +219,17 @@
 
       <div class="flexcol -gap-md -nowrap">
         {{!-- Powers --}}
+        <div class="mm-styled-field -field-over-container -sm">
+          <label class="mm-styled-label -align-left"><span>Default Element</span></label>
+          <div class="mm-styled-input">
+            <select name="system.defaultElement">
+              {{selectOptions elements selected=system.defaultElement labelAttr="label" blank=""}}
+            </select>
+          </div>
+        </div>
         <div class="mm-styled-container mm-powers-block">
           <h3>Powers</h3>
           <div class="mm-styled-container-body">
-            <div class="mm-styled-field -sm">
-              <label class="mm-styled-label -align-left"><span>Default Element</span></label>
-              <div class="mm-styled-input">
-                <select name="system.defaultElement">
-                  {{selectOptions elements selected=system.defaultElement labelAttr="label" blank=""}}
-                </select>
-              </div>
-            </div>
             {{> "systems/marvel-multiverse/templates/actor/parts/actor-powers.hbs"}}
           </div>
         </div>

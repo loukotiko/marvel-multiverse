@@ -15,6 +15,14 @@
   &.-flex-relative {
     flex: 1 1 auto;
   }
+  
+  &.-field-over-container{
+    position: relative;
+    width: calc(100% - 159px);
+    z-index: 1;
+    margin-bottom: -27px;
+    left: 159px;
+  }
 
   &.-sm {
     .mm-styled-input {

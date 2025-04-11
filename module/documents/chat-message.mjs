@@ -288,9 +288,9 @@ export class ChatMessageMarvel extends ChatMessage {
       game.i18n.localize(CONFIG.MARVEL_MULTIVERSE.abilities[ability]) ??
       ability;
 
-    const content = `<div class="marvel-roll"><h4 class="dice-total"><span>${
+    const content = `<details><summary class="marvel-roll" style="appearance:auto"><h4 class="dice-total"><span>${
       fantastic ? `${fantasticDmg} fantastic damage!` : `${dmg} damage`
-    }</span></h4></div>
+    }</span></h4></summary>
     <p style="text-align:center">
       <span title="Marvel Die">${marvelDie.total}</span>
       <i class="fas fa-xmark"></i>
@@ -322,7 +322,8 @@ export class ChatMessageMarvel extends ChatMessage {
         ? `<p style="font-size: 80%;text-align:center">
       <strong><i class="fas fa-xmark"></i> 2 (Fantastic roll!)
       </strong>
-    </p>`
+    </p>
+    </details>`
         : ``
     }
     `;
