@@ -105,7 +105,7 @@
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/loukotiko/marvel-multiverse/main/system.json",
-  "download": "https://github.com/loukotiko/marvel-multiverse/releases/download/release-1.10.3/marvel-multiverse-release-1.10.3.zip",
+  "download": "https://github.com/loukotiko/marvel-multiverse/releases/download/release-1.11.0/marvel-multiverse-release-1.11.0.zip",
   "background": "systems/marvel-multiverse/ui/official/mmrpg-background.webp",
   "grid": {
     "distance": 5,
