@@ -759,6 +759,7 @@
   padding-inline-end: 16px;
   padding-inline-start: 4px;
   z-index: 1;
+  float: right;
 }
 .mm-item-list .item-control {
   align-items: center;
@@ -906,20 +907,21 @@
   padding-inline-start: 16px;
   clip-path: polygon(0% 100%, 16px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%);
 }
-.sheet nav.mm-tabs.-three .item:nth-of-type(1) {
-  flex-basis: calc(33% + 16px);
-  margin-inline-end: -10px;
-  padding-inline-end: 16px;
+.sheet nav.mm-tabs.-three .item:first-of-type {
+  margin-inline-end: -6px;
+  margin-inline-start: 0px;
   clip-path: polygon(0% 20px, 20px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%);
 }
-.sheet nav.mm-tabs.-three .item:nth-of-type(2) {
-  flex-basis: calc(33% + 6px);
+.sheet nav.mm-tabs.-three .item {
+  flex: 1;
   clip-path: polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%);
+  margin-inline-end: -6px;
+  margin-inline-start: -6px;
+  padding-inline: 16px;
 }
-.sheet nav.mm-tabs.-three .item:nth-of-type(3) {
-  flex-basis: calc(33% + 16px);
-  margin-inline-start: -10px;
-  padding-inline-start: 16px;
+.sheet nav.mm-tabs.-three .item:last-of-type {
+  margin-inline-end: 0px;
+  margin-inline-start: -6px;
   clip-path: polygon(0% 100%, 16px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%);
 }
 .sheet nav.mm-tabs .sheet-tabs-wrapper {
@@ -943,6 +945,20 @@
 .sheet nav.mm-tabs .item.active {
   background: white;
   color: #e41d18;
+}
+
+.tags {
+  display: inline-block;
+  justify-content: flex-start;
+  grid-gap: 3px;
+  margin-top: 6px;
+  font-size: 90%;
+  margin-left: -6px;
+}
+.tags span {
+  background: #d8d8d8;
+  clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0px 100%);
+  padding: 0 9px;
 }
 
 .marvel-multiverse.sheet .window-content {
@@ -1390,6 +1406,9 @@
 }
 .marvel-multiverse.sheet.actor .sheet-body {
   overflow: hidden;
+}
+.marvel-multiverse.sheet.actor .sheet-body .tab {
+  overflow: auto;
 }
 .marvel-multiverse.sheet.actor .sheet-body .tab[data-tab],
 .marvel-multiverse.sheet.actor .sheet-body .tab[data-tab] > .flexrow {

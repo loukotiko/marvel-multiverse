@@ -1,0 +1,14 @@
+
+.tags {
+    display: inline-block;
+    justify-content: flex-start;
+    grid-gap: 3px;
+    margin-top: 6px;
+    font-size: 90%;
+    margin-left: -6px;
+    span {
+      background: #d8d8d8;
+      clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0px 100%);
+      padding: 0 9px;
+    }
+  }

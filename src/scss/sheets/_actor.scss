@@ -47,6 +47,10 @@
   .sheet-body {
     overflow: hidden;
 
+    .tab {
+      overflow: auto;
+    }
+
     .tab[data-tab],
     .tab[data-tab] > .flexrow {
       height: 100%;

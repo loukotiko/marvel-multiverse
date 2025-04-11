@@ -36,23 +36,36 @@
 
   &.-three {
     .item {
-      &:nth-of-type(1) {
-        flex-basis: calc(33% + 16px);
-        margin-inline-end: -10px;
-        padding-inline-end: 16px;
-        clip-path: polygon(0% 20px, 20px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%);
+      &:first-of-type {
+        margin-inline-end: -6px;
+        margin-inline-start: 0px;
+        clip-path: polygon(
+          0% 20px,
+          20px 0%,
+          100% 0%,
+          calc(100% - 16px) 100%,
+          0% 100%
+        );
       }
 
-      &:nth-of-type(2) {
-        flex-basis: calc(33% + 6px);
+      & {
+        flex: 1;
         clip-path: polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%);
+        margin-inline-end: -6px;
+        margin-inline-start: -6px;
+        padding-inline: 16px;
       }
 
-      &:nth-of-type(3) {
-        flex-basis: calc(33% + 16px);
-        margin-inline-start: -10px;
-        padding-inline-start: 16px;
-        clip-path: polygon(0% 100%, 16px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%);
+      &:last-of-type {
+        margin-inline-end: 0px;
+        margin-inline-start: -6px;
+        clip-path: polygon(
+          0% 100%,
+          16px 0%,
+          100% 0%,
+          100% calc(100% - 20px),
+          calc(100% - 20px) 100%
+        );
       }
     }
   }

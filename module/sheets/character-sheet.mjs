@@ -379,10 +379,14 @@ export class MarvelMultiverseCharacterSheet extends ActorSheet {
     const dataset = element.dataset;
     // Handle item rolls.
     if (dataset.rollType) {
+      const itemId = element.closest(".item").dataset.itemId;
+      const item = this.actor.items.get(itemId);
+      if (!item) return;
+      if (dataset.rollType === "chat") {
+        return item.displayChat();
+      }
       if (dataset.rollType === "item") {
-        const itemId = element.closest(".item").dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
+        return item.roll();
       }
     }
     if (dataset.formula) {
