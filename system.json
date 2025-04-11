@@ -25,17 +25,13 @@
       "thumbnail": "systems/marvel-multiverse/ui/official/mmrpg-setup-thumbnail.png"
     }
   ],
-  "version": "1.10.3",
+  "version": "1.11.0",
   "compatibility": {
     "minimum": 12,
     "verified": "12.328"
   },
-  "esmodules": [
-    "marvel-multiverse.mjs"
-  ],
-  "styles": [
-    "css/marvel-multiverse.css"
-  ],
+  "esmodules": ["marvel-multiverse.mjs"],
+  "styles": ["css/marvel-multiverse.css"],
   "languages": [
     {
       "lang": "en",
@@ -104,14 +100,7 @@
       "name": "MMRPG Content",
       "sorting": "m",
       "color": "#cd2c1e",
-      "packs": [
-        "tags",
-        "traits",
-        "origins",
-        "occupations",
-        "items",
-        "powers"
-      ]
+      "packs": ["tags", "traits", "origins", "occupations", "items", "powers"]
     }
   ],
   "socket": true,
@@ -126,16 +115,8 @@
   "secondaryTokenAttribute": "focus",
   "flags": {
     "hotReload": {
-      "extensions": [
-        "css",
-        "hbs",
-        "json"
-      ],
-      "paths": [
-        "css/marvel-multiverse.css",
-        "templates",
-        "lang"
-      ]
+      "extensions": ["css", "hbs", "json"],
+      "paths": ["css/marvel-multiverse.css", "templates", "lang"]
     }
   }
 }
